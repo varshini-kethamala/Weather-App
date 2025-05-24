@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=poppins&dispaly=swap">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">  
+        <div class="card"> 
+             <h2><i class="fa fa-map-marker"></i><span id="location"></span></h2>
+             <h6 id="weather"></h6>
+             <h4><span id="temp"></span><sup>0</sup>C</h4>
+             <img src="" id="icon">
+             <button onclick="window.location.reload()" class="refresh"><i class="fa fa-refresh"></i></button>
+        </div>
+    </div> 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZVPBJH+6g5Q1z4v2" crossorigin="anonymous"></script>
+    <script>
+     link="https:api.openweathermap.org/data/2.5/weather?q=hyderabad&appid=61220748de919d55376ffee23d2925d1"
+      var request =  new XMLHttpRequest()
+      request.open("GET",link, true);
+      request.onload=function(){
+        if(request.status>=200&&request.status<400){
+            var obj=JSON.parse(this.response);
+            console.log(obj)
+            document.getElementById("weather").innerHTML=obj.weather[0].description;
+            document.getElementById("location").innerHTML=obj.name;
+            document.getElementById("temp").innerHTML=Math.floor(obj.main.temp-273.15);
+            document.getElementById('icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+        }
+        else{
+            console.log("Error")
+        }
+      }
+      request.send();
+    </script>
+</body>
+</html>
