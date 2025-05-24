@@ -20,7 +20,8 @@
     </div> 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZVPBJH+6g5Q1z4v2" crossorigin="anonymous"></script>
     <script>
-     link="https:api.openweathermap.org/data/2.5/weather?q=hyderabad&appid=61220748de919d55376ffee23d2925d1"
+link="https:api.openweathermap.org/data/2.5/weather?q=hyderabad&appid=61220748de919d55376ffee23d2925d1"
+
       var request =  new XMLHttpRequest()
       request.open("GET",link, true);
       request.onload=function(){
@@ -30,7 +31,8 @@
             document.getElementById("weather").innerHTML=obj.weather[0].description;
             document.getElementById("location").innerHTML=obj.name;
             document.getElementById("temp").innerHTML=Math.floor(obj.main.temp-273.15);
-            document.getElementById('icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+        document.getElementById('icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+
         }
         else{
             console.log("Error")
